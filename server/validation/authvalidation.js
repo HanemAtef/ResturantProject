@@ -4,7 +4,7 @@ const registerValidation = (data) => {
         name: joi.string().min(3).max(50).required(),
         email: joi.string().email().required(),
         password: joi.string().min(6).max(100).required(),
-
+role: joi.string().valid("user", "admin").optional(),
         phone: joi.string().pattern(/^\d{11}$/).required(),
         address: joi.string().required(),
     });
