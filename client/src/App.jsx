@@ -11,13 +11,11 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
-    {/* home */}
+    {/* <BrowserRouter>
     <Routes>
         <Route element={<MainLayouts />}>
             <Route path="/" element={<Home />} />
         </Route>
-{/* auth routes */}
       <Route element={<AuthLayout/>}>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={ <Register/>}/>
@@ -26,7 +24,8 @@ function App() {
 
 
     </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <Home/>
     </>
   )
 }
