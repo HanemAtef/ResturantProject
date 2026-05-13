@@ -1,26 +1,23 @@
 import React from 'react';
-import {Routes, Route, Navegate} from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-import Login from './pages/Auth/Login/Login';
-import Register from './pages/Auth/Register/Register';
-import Footer from './components/layouts/Footer/Footer';
+import Login from './pages/Auth/Login/Login'; 
+import Register from './pages/Auth/Register/Register'; 
 
 function App() {
-    return(
-        <div classname= "App" style={{  display: 'flex', flexDirection: 'column', minHeight: '100vh' }} >
-             
-             <main style={{ flex: '1' }}>  
-            <Routes>
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/' element={<Navegate to='/login' />} />
-            </Routes>
-            </main> 
-
-            <Footer />
-    
-        </div>
-    );
+  return (
+    <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      
+      <main style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </main>
+      
+    </div>
+  );
 }
 
 export default App;
