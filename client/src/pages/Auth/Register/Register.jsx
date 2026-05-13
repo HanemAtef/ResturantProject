@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';
 import logoImg from '../../../assets/logo.png';
@@ -28,13 +28,15 @@ const Register = () => {
     try {
 
       const response = await axios.post(
-        'http://localhost:5000/api/users/register',
-        {
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-        }
-      );
+  'http://localhost:5000/api/users/register',
+  {
+    name: formData.username,
+    email: formData.email,
+    password: formData.password,
+    phone: "01012345678",
+    address: "Cairo"
+  }
+);
 
       console.log(response.data);
 
