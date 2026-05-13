@@ -6,15 +6,17 @@ const userRoutes = require('./routes/userRoutes');
 const errormiddleware = require("./middleware/errormiddleware");
 
 app.use(express.json()); 
+const cors = require('cors');
+app.use(cors());    
+
 async function dbConnection(){
     try{
        await mongoose.connect(process.env.MONGO_URI)
-        console.log("DB IS CONNECTION");
+       console.log("DB IS CONNECTION");
         
     }
-    catch{
+    catch(error){
         console.log(error);
-        
     }
 }
 dbConnection();
