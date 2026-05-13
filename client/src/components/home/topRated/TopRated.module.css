@@ -1,0 +1,93 @@
+.topRated {
+    background-color: var(--secondary);
+    padding: 80px 0;
+}
+
+.content p {
+    color: var(--primary);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.h2 {
+    font-size: 42px;
+    color: var(--neutral);
+    font-weight: bold;
+}
+
+.explore {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.bigest {
+    background-image: url(../../../assets/bowl.png);
+    background-size: cover;
+    background-position: center;
+   
+
+    height: 520px;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.child1,
+.child2 {
+    height: 248px;
+    border-radius: 20px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    color: var(--secondary);
+
+    background-size: cover;
+    background-position: center;
+    font-weight: bold;
+}
+
+.child1 {
+    background-image: url(../../../assets/meat.png);
+
+}
+
+.child2 {
+    background-image: url(../../../assets/pizza.png);
+
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+   
+}
+.span{
+ background-color: #b73d22;
+ border-radius: 50%;
+ width: 11%;
+ padding: 5px;
+}
