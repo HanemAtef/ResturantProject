@@ -1,0 +1,39 @@
+
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.box {
+    width: 80%;
+    display: flex;
+    gap: 50px;
+
+}
+
+
+
+.body {
+    display: flex;
+    flex-direction: column;
+    background:var(--background);
+    padding:20px;
+}
+
+.icon {
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: var(--primary);
+}
+
+.card-text {
+    margin-top: auto;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.card-title {
+    font-weight: 600;
+}

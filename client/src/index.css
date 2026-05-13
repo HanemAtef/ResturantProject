@@ -21,4 +21,13 @@ code {
 
 h1, h2, .font-serif {
     font-family: 'Georgia', serif;
+:root {
+  
+    --primary: #FF5733;
+    --secondary: #b0a7a7;
+    --tertiary: #1A1A1A;
+    --neutral: #89726D;
+    --background: #FDEAEA;
+    --border: #E8E8E8;
+    --cardBg:#FFB4A4 
 }

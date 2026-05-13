@@ -1,0 +1,50 @@
+.hero {
+    height: 80vh;
+    background-image: url(../../../assets/Hero.png);
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 80px;
+
+}
+.content{
+    max-width: 40%;
+}
+
+.content h1 {
+    color: var(--secondary)
+}
+
+.content p {
+    color: var(--secondary)
+}
+
+.btn {
+    display: flex;
+    gap: 15px;
+}
+
+.orangeBtn {
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: 0px;
+    padding: 10px;
+}
+
+.whiteBtn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    color: var(--secondary);
+    border: 0px;
+    font-size: 15px;
+    padding: 10px;
+
+}
