@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose=require("mongoose")
 const app = express();
 const userRoutes = require('./routes/userRoutes');
+const mealRoutes=require("./routes/mealRoutes");
 const errormiddleware = require("./middleware/errormiddleware");
 
 app.use(express.json()); 
@@ -20,14 +21,15 @@ async function dbConnection(){
     }
 }
 dbConnection();
-
-app.use('/api/users', userRoutes);
 app.use(errormiddleware);
+// routes
+app.use('/api/users', userRoutes);
+app.use("/api", mealRoutes);
+
+
+
 
 const port = process.env.PORT || 5000;
-
-
-
 app.listen(port,()=>{
     console.log(`server is running 🤸🤸 ${port}`);
 })

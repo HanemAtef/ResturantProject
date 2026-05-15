@@ -1,28 +1,32 @@
-    const mongoose = require("mongoose");
+  const mongoose=require ("mongoose");
     const mealschema = new mongoose.Schema(
     {
         title: {
-        typeof: String,
+        type: String,
         required: true,
         },
         description: {
-        typeof: String,
+        type: String,
         required: true,
         },
         price: {
-        typeof: Number,
+        type: Number,
         required: true,
         },
         image: {
-        typeof: String,
+        type: String,
         required: true,
         },
         category: {
-        typeof: String,
+        type: String,
         required: true,
         },
     },
     { timestamps: true },
     );
+    mealschema.index({
+    title: "text",
+    category: "text",
+    }); 
 const Meal = mongoose.model("Meal", mealschema);
 module.exports = Meal;
