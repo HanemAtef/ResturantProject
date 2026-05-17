@@ -10,14 +10,14 @@ import Footer from '../components/layouts/Footer/Footer'
 export default function Home() {
   return (
     <>
-   <Navbar/>
+   {/* <Navbar/> */}
    <Herosection/>
    <Categories/>
    <TopRated/>
     <Feature/>
   <Favourit/>
   <Review/>
-  <Footer/>
+  {/* <Footer/> */}
     </>
 
 
