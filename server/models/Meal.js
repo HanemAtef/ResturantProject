@@ -2,23 +2,23 @@
     const mealschema = new mongoose.Schema(
     {
         title: {
-        typeof: String,
+        type: String,
         required: true,
         },
         description: {
-        typeof: String,
+        type: String,
         required: true,
         },
         price: {
-        typeof: Number,
+        type: Number,
         required: true,
         },
         image: {
-        typeof: String,
+        type: String,
         required: true,
         },
         category: {
-        typeof: String,
+        type: String,
         required: true,
         },
     },
