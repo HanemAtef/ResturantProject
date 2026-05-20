@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const validate = require("../middleware/MiddlewareValidation");
-const {createMeal,updateMeal} = require("../Controller/MealController");
+const {createMeal,updateMeal} = require("../Controller/mealController");
 const {createMealSchema,updateMealSchema} = require("../validation/mealValidation");
 
 
