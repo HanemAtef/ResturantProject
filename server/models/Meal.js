@@ -1,4 +1,4 @@
-    const mongoose = require("mongoose");
+  const mongoose=require ("mongoose");
     const mealschema = new mongoose.Schema(
     {
         title: {
@@ -24,5 +24,9 @@
     },
     { timestamps: true },
     );
+    mealschema.index({
+    title: "text",
+    category: "text",
+    }); 
 const Meal = mongoose.model("Meal", mealschema);
 module.exports = Meal;

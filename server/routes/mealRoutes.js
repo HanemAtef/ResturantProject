@@ -1,5 +1,11 @@
-const express = require("express");
-const router = express.Router();
+
+
+
+
+module.exports = router;
+const express=require('express');
+const Router=express.Router();
+const {getMeals,getMeal}=require("../Controller/mealController");
 const validate = require("../middleware/MiddlewareValidation");
 const {createMeal,updateMeal} = require("../Controller/mealController");
 const {createMealSchema,updateMealSchema} = require("../validation/mealValidation");
@@ -13,6 +19,6 @@ router.put("/:id", validate(updateMealSchema), updateMeal );
 
 // delete
 router.delete("/:id", deleteMeal);
-
-
-module.exports = router;
+Router.get("/meals",getMeals);
+Router.get("/meals/:id",getMeal);
+module.exports=Router;
