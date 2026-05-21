@@ -1,60 +1,34 @@
 const Cart = require("../models/Cart.js");
 const Meal = require("../models/Meal.js");
 
-// Add To Cart 
+// ─── Add To Cart ─────────────────────────────────────────────────────────────
 const add_cart = async (req, res) => {
-  const { userId, mealId, quantity } = req.body;
+  const userId = req.user.id; // من الـ token
+  const { mealId, quantity } = req.body;
 
   try {
-    // Find the meal to get its details
     const meal = await Meal.findById(mealId);
-    if (!meal) {
-      return res.status(404).json({ message: "Meal not found" });
-    }
+    if (!meal) return res.status(404).json({ message: "Meal not found" });
 
-    // Check if the user already has a cart
     let cart = await Cart.findOne({ userId });
 
     if (cart) {
-      // Cart exists — check if this meal is already in it
       const mealIndex = cart.meal.findIndex(
         (item) => item.mealId.toString() === mealId
       );
-
       if (mealIndex > -1) {
-        // Meal already exists → update quantity
         cart.meal[mealIndex].quantity += quantity;
       } else {
-        // Meal not in cart → add it
-        cart.meal.push({
-          mealId,
-          quantity,
-          title: meal.title,
-          image: meal.image,
-          price: meal.price,
-        });
+        cart.meal.push({ mealId, quantity, title: meal.title, image: meal.image, price: meal.price });
       }
     } else {
-      // No cart for this user → create a new one
       cart = new Cart({
         userId,
-        meal: [
-          {
-            mealId,
-            quantity,
-            title: meal.title,
-            image: meal.image,
-            price: meal.price,
-          },
-        ],
+        meal: [{ mealId, quantity, title: meal.title, image: meal.image, price: meal.price }],
       });
     }
 
-    // Recalculate total price
-    cart.totalPrice = cart.meal.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    cart.totalPrice = cart.meal.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const savedCart = await cart.save();
     res.status(200).json(savedCart);
@@ -63,51 +37,38 @@ const add_cart = async (req, res) => {
   }
 };
 
-// Get User Cart 
+// ─── Get User Cart ────────────────────────────────────────────────────────────
 const get_cart = async (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user.id; // من الـ token
 
   try {
     const cart = await Cart.findOne({ userId });
-    if (!cart) {
-      return res.status(404).json({ message: "Cart not found" });
-    }
+    if (!cart) return res.status(404).json({ message: "Cart not found" });
     res.status(200).json(cart);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-//Update Meal Quantity 
+// ─── Update Meal Quantity ─────────────────────────────────────────────────────
 const update_cart = async (req, res) => {
-  const { userId, mealId, quantity } = req.body;
+  const userId = req.user.id; // من الـ token
+  const { mealId, quantity } = req.body;
 
   try {
     const cart = await Cart.findOne({ userId });
-    if (!cart) {
-      return res.status(404).json({ message: "Cart not found" });
-    }
+    if (!cart) return res.status(404).json({ message: "Cart not found" });
 
-    const mealIndex = cart.meal.findIndex(
-      (item) => item.mealId.toString() === mealId
-    );
-
-    if (mealIndex === -1) {
-      return res.status(404).json({ message: "Meal not found in cart" });
-    }
+    const mealIndex = cart.meal.findIndex((item) => item.mealId.toString() === mealId);
+    if (mealIndex === -1) return res.status(404).json({ message: "Meal not found in cart" });
 
     if (quantity <= 0) {
-      // Remove the meal if quantity reaches 0
       cart.meal.splice(mealIndex, 1);
     } else {
       cart.meal[mealIndex].quantity = quantity;
     }
 
-    // Recalculate total price
-    cart.totalPrice = cart.meal.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    cart.totalPrice = cart.meal.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const updatedCart = await cart.save();
     res.status(200).json(updatedCart);
@@ -116,25 +77,17 @@ const update_cart = async (req, res) => {
   }
 };
 
-// Remove Meal From Cart 
+// ─── Remove Meal From Cart ────────────────────────────────────────────────────
 const remove_from_cart = async (req, res) => {
-  const { userId, mealId } = req.params;
+  const userId = req.user.id; // من الـ token
+  const { mealId } = req.params;
 
   try {
     const cart = await Cart.findOne({ userId });
-    if (!cart) {
-      return res.status(404).json({ message: "Cart not found" });
-    }
+    if (!cart) return res.status(404).json({ message: "Cart not found" });
 
-    cart.meal = cart.meal.filter(
-      (item) => item.mealId.toString() !== mealId
-    );
-
-    // Recalculate total price
-    cart.totalPrice = cart.meal.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    cart.meal = cart.meal.filter((item) => item.mealId.toString() !== mealId);
+    cart.totalPrice = cart.meal.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const updatedCart = await cart.save();
     res.status(200).json(updatedCart);
@@ -143,25 +96,17 @@ const remove_from_cart = async (req, res) => {
   }
 };
 
-// Clear Entire Cart 
+// ─── Clear Entire Cart ────────────────────────────────────────────────────────
 const clear_cart = async (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user.id; // من الـ token
 
   try {
     const cart = await Cart.findOneAndDelete({ userId });
-    if (!cart) {
-      return res.status(404).json({ message: "Cart not found" });
-    }
+    if (!cart) return res.status(404).json({ message: "Cart not found" });
     res.status(200).json({ message: "Cart cleared successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-module.exports = {
-  add_cart,
-  get_cart,
-  update_cart,
-  remove_from_cart,
-  clear_cart,
-};
+module.exports = { add_cart, get_cart, update_cart, remove_from_cart, clear_cart };
