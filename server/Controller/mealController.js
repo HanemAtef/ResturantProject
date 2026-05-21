@@ -87,4 +87,5 @@ const searchMeals=async(req,res)=>{
 
 module.exports={    
     getMeals,
-    getMeal}
+    getMeal,
+searchMeals}
