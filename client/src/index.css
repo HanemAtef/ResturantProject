@@ -13,7 +13,7 @@ h1, h2, .font-serif {
     --secondary: #b0a7a7;
     --tertiary: #1A1A1A;
     --neutral: #89726D;
-    --background: #FDEAEA;
+    --background: hsl(0, 83%, 95%);
     --border: #E8E8E8;
     --cardBg:#FFB4A4 
 }
