@@ -1,4 +1,5 @@
 import style from "./Navbar.module.css"
+import {Link} from "react-router-dom"
 
 export default function Navbar() {
     const links = [
@@ -21,7 +22,9 @@ export default function Navbar() {
             </ul>
 
             <div className={`${style.icons} d-flex gap-3`}>
+             <Link to="/cart" >
                 <i className="fa-solid fa-cart-shopping"></i>
+                </Link>
                 <i className="fa-solid fa-circle-user"></i>
             </div>
 

@@ -14,6 +14,7 @@ import MealDetails from "./pages/MealDetails/MealDetails";
 /* Auth Pages */
 import Login from "./pages/Auth/Login/Login";
 import Register from "./pages/Auth/Register/Register";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           path="/meal-details"
           element={<MealDetails />}
         />
+        <Route path="/cart" element={<CartPage />} />
 
         {/* Future Pages */}
         {/* <Route path="/about" element={<About />} /> */}
