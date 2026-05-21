@@ -85,7 +85,6 @@ const searchMeals=async(req,res)=>{
 
 }
 
-const Meal = require("../models/Meal");
 // Create Meal
 const createMeal = async (req, res) => {
 
@@ -144,12 +143,12 @@ const deleteMeal = async (req, res) => {
     });
 }
 
-
-module.exports={    
-    getMeals,
-    getMeal,
-searchMeals,
+module.exports = {
     createMeal,
     updateMeal,
-    deleteMeal
+    deleteMeal,
+    getMeal,
+    getMeals,
+    searchMeals
 }
+
