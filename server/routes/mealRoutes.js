@@ -1,7 +1,4 @@
 
-
-
-
 module.exports = router;
 const express=require('express');
 const Router=express.Router();
