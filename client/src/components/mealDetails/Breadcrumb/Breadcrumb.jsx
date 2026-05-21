@@ -1,19 +1,21 @@
 import styles from "./Breadcrumb.module.css";
 
-const Breadcrumb = () => {
+import { Link } from "react-router-dom";
+
+const Breadcrumb = ({ dishName, category }) => {
   return (
     <div className={styles.breadcrumb}>
 
-      <span>MENU</span>
+      <Link style={{textDecoration: 'none', color: 'inherit'}} to="/menu">MENU</Link>
 
       <i className="fa-solid fa-chevron-right"></i>
 
-      <span>MAIN ENTREE</span>
+      <span style={{textTransform: 'uppercase'}}>{category || "MAIN ENTREE"}</span>
 
       <i className="fa-solid fa-chevron-right"></i>
 
-      <span className={styles.active}>
-        TRUFFLE BUTTER SALMON
+      <span className={styles.active} style={{textTransform: 'uppercase'}}>
+        {dishName || "TRUFFLE BUTTER SALMON"}
       </span>
 
     </div>
