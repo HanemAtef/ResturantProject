@@ -1,11 +1,9 @@
 import MealFeatures from "../MealFeatures/MealFeatures";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 
-import salmon from "../../../assets/Grilled Salmon.png";
-
 import styles from "./MealInfo.module.css";
 
-const MealInfo = () => {
+const MealInfo = ({ dish }) => {
   return (
     <div className={styles.wrapper}>
 
@@ -13,8 +11,8 @@ const MealInfo = () => {
       <div className={styles.detailsHero}>
 
         <img
-          src={salmon}
-          alt="salmon"
+          src={dish?.image}
+          alt={dish?.name || "Meal Image"}
           className={styles.image}
         />
 
@@ -27,18 +25,18 @@ const MealInfo = () => {
       {/* RIGHT SIDE INFO */}
       <div className={styles.infoSection}>
 
-        <p className={styles.signature}>
-          CHEF'S SIGNATURE
+        <p className={styles.signature} style={{textTransform: 'uppercase'}}>
+          {dish?.tag || "SPECIALITY"}
         </p>
 
         <h1 className={styles.title}>
-          Truffle Butter Glazed Atlantic Salmon
+          {dish?.name || "Truffle Butter Glazed Atlantic Salmon"}
         </h1>
 
         <div className={styles.ratingRow}>
 
           <span className={styles.price}>
-            $34.50
+            {dish?.price || "$34.50"}
           </span>
 
      
@@ -46,10 +44,7 @@ const MealInfo = () => {
         </div>
 
         <p className={styles.description}>
-          Our premium Atlantic salmon is pan-seared to perfection,
-          finished with a decadent black truffle butter glaze.
-          Served over a bed of wood-fired seasonal asparagus
-          and a citrus-infused herb oil drizzle.
+          {dish?.description || "Our premium Atlantic salmon is pan-seared to perfection, finished with a decadent black truffle butter glaze."}
         </p>
 
         <MealFeatures />
@@ -59,7 +54,7 @@ const MealInfo = () => {
           <QuantitySelector />
 
           <button className={styles.cartBtn}>
-            ADD TO CART — $34.50
+            ADD TO CART — {dish?.price || "$34.50"}
           </button>
 
         </div>
