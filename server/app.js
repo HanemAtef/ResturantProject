@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-
+const cartRoutes    = require("./routes/cartRoutes");
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -21,6 +21,7 @@ app.use("/api/users", userRoutes);
 app.use("/api", mealRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/checkout", checkoutRoutes);
+app.use("/api/cart",    cartRoutes);
 
 // Error middleware MUST be last
 const errormiddleware = require("./middleware/errormiddleware");
