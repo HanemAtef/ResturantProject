@@ -74,6 +74,7 @@ const searchMeals=async(req,res)=>{
         mealsInPage: meals.length,
       }
     });
+    
   
     }
     catch(err){
@@ -151,9 +152,3 @@ module.exports={
     updateMeal,
     deleteMeal
 }
-
-
-
-
-
-
