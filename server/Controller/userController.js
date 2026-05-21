@@ -8,7 +8,7 @@ const { registerValidation, loginValidation } = require("../validation/authvalid
 // @access  Public
 const register = async (req, res, next) => {
   try {
-    const { name, email, password, phone, address } = req.body;
+    const { name, email, password, phone, address, role } = req.body;
 
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).json({ msg: error.details[0].message });
@@ -20,7 +20,8 @@ const register = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({ name, email, password: hashedPassword, role: "user", phone, address });
+    const userRole = role || "user";
+    const user = await User.create({ name, email, password: hashedPassword, role: userRole, phone, address });
 
     res.status(201).json({
       status: "success",

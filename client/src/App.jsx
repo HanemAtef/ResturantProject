@@ -34,7 +34,7 @@ function App() {
         />
 
         <Route
-          path="/meal-details"
+          path="/meal/:id"
           element={<MealDetails />}
         />
         <Route path="/cart" element={<CartPage />} />
