@@ -1,0 +1,13 @@
+.container {
+    width: 35%;
+    background-color: white;
+    border: 1px solid #f0ebe6;
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: sticky;
+    top: 24px;
+    height: 45vh;
+}

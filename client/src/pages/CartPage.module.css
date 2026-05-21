@@ -1,0 +1,11 @@
+.container{
+    background-color:  #fdf7f5;
+    height: 100vh;
+}
+.header{
+    padding: 60px;
+    
+}
+h1{
+    font-weight: bold;
+}
