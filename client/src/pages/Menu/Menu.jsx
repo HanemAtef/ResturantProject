@@ -8,6 +8,7 @@ function Menu(){
 
     return(
         <>
+        <div className={`${styles.address}`}> 
       
         <div className={styles.address}> 
             <h1>Our Curated Menu</h1>
