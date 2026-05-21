@@ -5,6 +5,7 @@ import Categories from "../components/home/categories/Categories"
 import Review from "../components/home/review/Review"
 import Favourit from '../components/home/favourit/Favourit'
 import Footer from '../components/layouts/Footer/Footer'
+import CartPage from './CartPage'
 
 import CartPage from './CartPage'
 // import CheckoutPage from './CheckoutPage'

@@ -9,12 +9,15 @@ function Menu(){
     return(
         <>
         <div className={`${styles.address}`}> 
+      
+        <div className={styles.address}> 
             <h1>Our Curated Menu</h1>
             <p>Discover the finest urban dining experience, crafted with passion and seasonal
                 ingredients.</p>
         </div>
         <Searchbar searchTerm={searchTerm} onSearch={setSearchTerm}/>
         <Dishes searchTermFromParent={searchTerm}/>
+      
         </>
     )
 }
